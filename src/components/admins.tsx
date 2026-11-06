@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { admins } from "@/lib/rules-data";
+import { TelegramIcon } from "@/components/brand-icons";
 
 const roleStyles: Record<string, string> = {
   OWNER: "border-transparent bg-gradient-to-r from-neon-purple to-neon-pink text-white shadow-[0_0_16px_-4px_var(--neon-purple)]",
@@ -33,14 +34,31 @@ export function AdminsSection() {
 
       <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
         {admins.map((admin, i) => (
-          <motion.div
+          <motion.a
             key={admin.name}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.35, delay: i * 0.06 }}
-            className="neon-card flex flex-col items-center gap-3 rounded-2xl border bg-card p-5 text-center"
+            href={admin.telegram ? `https://t.me/${admin.telegram}` : undefined}
+            target={admin.telegram ? "_blank" : undefined}
+            rel={admin.telegram ? "noopener noreferrer" : undefined}
+            aria-label={
+              admin.telegram ? `Открыть Telegram ${admin.name}` : undefined
+            }
+            title={
+              admin.telegram ? `Написать ${admin.name} в Telegram` : undefined
+            }
+            className={`neon-card group relative flex flex-col items-center gap-3 rounded-2xl border bg-card p-5 text-center ${
+              admin.telegram ? "cursor-pointer" : ""
+            }`}
           >
+            {admin.telegram && (
+              <TelegramIcon
+                className="absolute top-3 right-3 h-4 w-4 text-muted-foreground opacity-40 transition-opacity duration-200 group-hover:opacity-100"
+                aria-hidden="true"
+              />
+            )}
             <div
               className={`admin-avatar font-display flex h-14 w-14 items-center justify-center rounded-full text-lg text-white ${
                 admin.role === "OWNER"
@@ -60,7 +78,7 @@ export function AdminsSection() {
             >
               {admin.role}
             </span>
-          </motion.div>
+          </motion.a>
         ))}
       </div>
     </section>

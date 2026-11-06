@@ -9,6 +9,8 @@ export interface Rule {
 export interface Admin {
   name: string;
   role: string;
+  /** Юзернейм Telegram без «@» — если задан, карточка админа кликабельная. */
+  telegram?: string;
 }
 
 export interface Social {
@@ -123,11 +125,11 @@ export const voiceAdminRights = [
 ];
 
 export const admins: Admin[] = [
-  { name: "Ponzi", role: "OWNER" },
-  { name: "Miron Lavr", role: "H.ADMIN" },
+  { name: "Ponzi", role: "OWNER", telegram: "Ponziitochka" },
+  { name: "Miron Lavr", role: "H.ADMIN", telegram: "MironLavrentyev" },
   { name: "Kirxwq", role: "H.ADMIN" },
-  { name: "Baton", role: "CURATOR" },
-  { name: "Ser4ek", role: "CO.CURATOR" },
+  { name: "Baton", role: "CURATOR", telegram: "bkysnuibaton" },
+  { name: "Ser4ek", role: "CO.CURATOR", telegram: "od1ho4k" },
 ];
 
 export function punishmentKind(punishment: string | undefined): PunishmentKind {

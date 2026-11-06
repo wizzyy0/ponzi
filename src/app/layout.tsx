@@ -25,9 +25,6 @@ export const metadata: Metadata = {
   description:
     "Официальные правила Twitch-канала, YouTube-канала и голосового чата стримера Ponzi. Наказания за нарушения, состав администрации и ссылки на соц-сети.",
   keywords: ["Ponzi", "правила", "Twitch", "YouTube", "войс", "стрим"],
-  icons: {
-    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
-  },
   openGraph: {
     title: "Правила канала Ponzi",
     description:
