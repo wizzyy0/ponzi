@@ -42,9 +42,9 @@ export function AdminsSection() {
             className="neon-card flex flex-col items-center gap-3 rounded-2xl border bg-card p-5 text-center"
           >
             <div
-              className={`font-display flex h-14 w-14 items-center justify-center rounded-full text-lg text-white ${
+              className={`admin-avatar font-display flex h-14 w-14 items-center justify-center rounded-full text-lg text-white ${
                 admin.role === "OWNER"
-                  ? "bg-gradient-to-br from-neon-purple to-neon-pink shadow-[0_0_22px_-4px_var(--neon-purple)]"
+                  ? "is-owner bg-gradient-to-br from-neon-purple to-neon-pink shadow-[0_0_22px_-4px_var(--neon-purple)]"
                   : "bg-gradient-to-br from-neon-purple/80 to-neon-pink/80"
               }`}
               aria-hidden="true"
@@ -53,7 +53,8 @@ export function AdminsSection() {
             </div>
             <p className="text-sm font-semibold leading-tight">{admin.name}</p>
             <span
-              className={`rounded-full border px-3 py-1 text-[10px] font-bold tracking-widest ${
+              data-role={admin.role}
+              className={`role-badge rounded-full border px-3 py-1 text-[10px] font-bold tracking-widest ${
                 roleStyles[admin.role] ?? roleStyles["CO.CURATOR"]
               }`}
             >

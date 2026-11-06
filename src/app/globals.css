@@ -208,3 +208,172 @@
   background: color-mix(in oklab, var(--neon-purple) 70%, transparent);
   background-clip: content-box;
 }
+
+/* ==== Строгий чёрно-белый режим (html[data-neon="off"]) ====
+   Неон выключен: никаких градиентов, свечений и цвета —
+   только чёрный, белый и оттенки серого. */
+
+/* Светлая строгая тема + нейтрализация неон-акцентов.
+   --neon-* приравниваются к цвету текста, поэтому все места,
+   где использовались неон-переменные (бейджи, чипы, сетка,
+   скроллбар, свечение карточек), автоматически становятся монохромными. */
+html[data-neon="off"] {
+  --neon-purple: var(--foreground);
+  --neon-pink: var(--foreground);
+  --neon-orange: var(--foreground);
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.12 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.12 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.12 0 0);
+  --primary: oklch(0.12 0 0);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0 0);
+  --secondary-foreground: oklch(0.15 0 0);
+  --muted: oklch(0.95 0 0);
+  --muted-foreground: oklch(0.45 0 0);
+  --accent: oklch(0.94 0 0);
+  --accent-foreground: oklch(0.12 0 0);
+  --destructive: oklch(0.25 0 0);
+  --border: oklch(0.12 0 0 / 15%);
+  --input: oklch(0.12 0 0 / 20%);
+  --ring: oklch(0.12 0 0 / 40%);
+  --chart-1: oklch(0.25 0 0);
+  --chart-2: oklch(0.35 0 0);
+  --chart-3: oklch(0.45 0 0);
+  --chart-4: oklch(0.55 0 0);
+  --chart-5: oklch(0.65 0 0);
+  --sidebar: oklch(0.98 0 0);
+  --sidebar-foreground: oklch(0.12 0 0);
+  --sidebar-primary: oklch(0.12 0 0);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.94 0 0);
+  --sidebar-accent-foreground: oklch(0.12 0 0);
+  --sidebar-border: oklch(0.12 0 0 / 15%);
+  --sidebar-ring: oklch(0.12 0 0 / 40%);
+}
+
+/* Тёмная строгая тема: глубокий чёрный, чистый белый, без цветного оттенка */
+html[data-neon="off"].dark {
+  --background: oklch(0.08 0 0);
+  --foreground: oklch(0.97 0 0);
+  --card: oklch(0.13 0 0);
+  --card-foreground: oklch(0.97 0 0);
+  --popover: oklch(0.13 0 0);
+  --popover-foreground: oklch(0.97 0 0);
+  --primary: oklch(0.97 0 0);
+  --primary-foreground: oklch(0.08 0 0);
+  --secondary: oklch(0.18 0 0);
+  --secondary-foreground: oklch(0.97 0 0);
+  --muted: oklch(0.18 0 0);
+  --muted-foreground: oklch(0.62 0 0);
+  --accent: oklch(0.22 0 0);
+  --accent-foreground: oklch(0.97 0 0);
+  --destructive: oklch(0.85 0 0);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(1 0 0 / 35%);
+  --chart-1: oklch(0.85 0 0);
+  --chart-2: oklch(0.75 0 0);
+  --chart-3: oklch(0.65 0 0);
+  --chart-4: oklch(0.55 0 0);
+  --chart-5: oklch(0.45 0 0);
+  --sidebar: oklch(0.13 0 0);
+  --sidebar-foreground: oklch(0.97 0 0);
+  --sidebar-primary: oklch(0.97 0 0);
+  --sidebar-primary-foreground: oklch(0.08 0 0);
+  --sidebar-accent: oklch(0.22 0 0);
+  --sidebar-accent-foreground: oklch(0.97 0 0);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(1 0 0 / 35%);
+}
+
+/* Градиентный текст — сплошной цвет */
+html[data-neon="off"] .text-gradient {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: var(--foreground);
+}
+
+/* Никаких свечений заголовков */
+html[data-neon="off"] .neon-glow {
+  filter: none;
+}
+
+/* Цветные световые пятна на фоне — убрать */
+html[data-neon="off"] .hero-blob {
+  display: none;
+}
+
+/* Элементы с неон-градиентной заливкой (логотип, CTA, активная вкладка):
+   сплошная инверсия — заливка цветом текста, текст цветом фона */
+html[data-neon="off"] .logo-badge,
+html[data-neon="off"] .cta-button,
+html[data-neon="off"] .tab-active {
+  background-image: none;
+  background-color: var(--foreground);
+  color: var(--background);
+  box-shadow: none;
+}
+
+/* Счётчик правил внутри активной вкладки */
+html[data-neon="off"] .tab-active .tab-count {
+  background-color: color-mix(in oklab, var(--background) 25%, transparent);
+  color: var(--background);
+}
+
+/* Аватары администрации: нейтральная заливка, у OWNER — инверсия */
+html[data-neon="off"] .admin-avatar {
+  background-image: none;
+  background-color: var(--muted);
+  color: var(--foreground);
+  box-shadow: none;
+}
+html[data-neon="off"] .admin-avatar.is-owner {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+/* Бейджи ролей: монохром, OWNER — инверсия */
+html[data-neon="off"] .role-badge {
+  background-image: none;
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+  border-color: var(--border);
+  box-shadow: none;
+}
+html[data-neon="off"] .role-badge[data-role="OWNER"] {
+  background-color: var(--foreground);
+  color: var(--background);
+  border-color: transparent;
+}
+
+/* Бейдж наказания «Бан» — единственный акцент строгого режима: инверсия */
+html[data-neon="off"] .kind-badge[data-kind="ban"] {
+  background-color: var(--foreground);
+  color: var(--background);
+  border-color: var(--foreground);
+}
+
+/* Плашка-уведомление в войсе — строгая панель */
+html[data-neon="off"] .voice-notice {
+  border-color: var(--border);
+  background-color: color-mix(in oklab, var(--foreground) 6%, transparent);
+}
+
+/* Кружки соцсетей при наведении — инверсия вместо брендовых цветов */
+html[data-neon="off"] .social-circle:hover {
+  background-color: var(--foreground);
+  border-color: var(--foreground);
+  color: var(--background);
+  box-shadow: none;
+}
+
+/* Выделение текста — инверсия */
+html[data-neon="off"] ::selection {
+  background: var(--foreground);
+  color: var(--background);
+}

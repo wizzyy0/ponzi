@@ -53,6 +53,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${russoOne.variable} antialiased bg-background text-foreground`}
       >
+        {/* Восстанавливаем выбранный режим (неон/строгий ч/б) до первой отрисовки — без мигания */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'try{if(localStorage.getItem("ponzi-neon")==="off")document.documentElement.dataset.neon="off"}catch(e){}',
+          }}
+        />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           {children}
           <Toaster />

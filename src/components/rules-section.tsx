@@ -63,7 +63,8 @@ function PunishmentBadge({ punishment }: { punishment: string | undefined }) {
   return (
     <Badge
       variant="outline"
-      className={`gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium ${meta.className}`}
+      data-kind={kind}
+      className={`kind-badge gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium ${meta.className}`}
     >
       <Icon className="h-3.5 w-3.5" />
       <span>Наказание: {text}</span>
@@ -125,7 +126,7 @@ function VoiceTab() {
   return (
     <div className="flex flex-col gap-6">
       {/* Жирная плашка-уведомление */}
-      <div className="rounded-2xl border border-neon-pink/40 bg-neon-pink/10 px-5 py-4 text-sm font-semibold text-foreground sm:text-base">
+      <div className="voice-notice rounded-2xl border border-neon-pink/40 bg-neon-pink/10 px-5 py-4 text-sm font-semibold text-foreground sm:text-base">
         {voiceNotice}
       </div>
 
@@ -231,7 +232,7 @@ export function RulesSection() {
                   value={key}
                   className={`rounded-full px-4 py-2.5 text-sm font-semibold transition-all sm:px-6 ${
                     active
-                      ? "bg-gradient-to-r from-neon-purple to-neon-pink text-white shadow-[0_0_20px_-6px_var(--neon-purple)]"
+                      ? "tab-active bg-gradient-to-r from-neon-purple to-neon-pink text-white shadow-[0_0_20px_-6px_var(--neon-purple)]"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
@@ -239,7 +240,7 @@ export function RulesSection() {
                   <span className="hidden sm:inline">{meta.label}</span>
                   <span className="sm:hidden">{meta.label}</span>
                   <span
-                    className={`ml-1 hidden rounded-full px-2 py-0.5 text-[10px] font-bold md:inline ${
+                    className={`tab-count ml-1 hidden rounded-full px-2 py-0.5 text-[10px] font-bold md:inline ${
                       active ? "bg-white/20 text-white" : "bg-muted text-muted-foreground"
                     }`}
                   >

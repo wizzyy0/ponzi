@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Gamepad2, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { NeonToggle } from "@/components/neon-toggle";
 import { SocialRail, SocialRow } from "@/components/social-rail";
 import { RulesSection } from "@/components/rules-section";
 import { AdminsSection } from "@/components/admins";
@@ -19,9 +20,9 @@ export default function Home() {
       {/* Фоновое неон-свечение + сетка */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="neon-grid-bg absolute inset-0" />
-        <div className="absolute -top-32 left-1/2 h-72 w-[42rem] -translate-x-1/2 rounded-full bg-neon-purple/25 blur-[110px] dark:bg-neon-purple/30" />
-        <div className="absolute -left-24 top-64 h-64 w-64 rounded-full bg-neon-pink/20 blur-[100px]" />
-        <div className="absolute -right-24 top-96 h-64 w-64 rounded-full bg-neon-purple/20 blur-[100px]" />
+        <div className="hero-blob absolute -top-32 left-1/2 h-72 w-[42rem] -translate-x-1/2 rounded-full bg-neon-purple/25 blur-[110px] dark:bg-neon-purple/30" />
+        <div className="hero-blob absolute -left-24 top-64 h-64 w-64 rounded-full bg-neon-pink/20 blur-[100px]" />
+        <div className="hero-blob absolute -right-24 top-96 h-64 w-64 rounded-full bg-neon-purple/20 blur-[100px]" />
       </div>
 
       {/* Соц-сети кружочками справа */}
@@ -31,7 +32,7 @@ export default function Home() {
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/70 backdrop-blur-md">
         <div className="mx-auto flex h-16 w-full max-w-5xl items-center justify-between px-4 sm:px-6">
           <a href="#" className="font-display flex items-center gap-2 text-lg">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-neon-purple to-neon-pink text-white shadow-[0_0_18px_-4px_var(--neon-purple)]">
+            <span className="logo-badge flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-neon-purple to-neon-pink text-white shadow-[0_0_18px_-4px_var(--neon-purple)]">
               <Gamepad2 className="h-5 w-5" />
             </span>
             <span>
@@ -56,6 +57,7 @@ export default function Home() {
             >
               Администрация
             </Button>
+            <NeonToggle />
             <ThemeToggle />
           </nav>
         </div>
@@ -111,7 +113,7 @@ export default function Home() {
             <Button
               size="lg"
               onClick={scrollToRules}
-              className="mt-8 rounded-full bg-gradient-to-r from-neon-purple to-neon-pink px-8 text-base font-semibold text-white shadow-[0_0_28px_-6px_var(--neon-purple)] transition-transform hover:scale-[1.03]"
+              className="cta-button mt-8 rounded-full bg-gradient-to-r from-neon-purple to-neon-pink px-8 text-base font-semibold text-white shadow-[0_0_28px_-6px_var(--neon-purple)] transition-transform hover:scale-[1.03]"
             >
               Читать правила
             </Button>
