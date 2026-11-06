@@ -127,7 +127,7 @@ export const voiceAdminRights = [
 export const admins: Admin[] = [
   { name: "Ponzi", role: "OWNER", telegram: "Ponziitochka" },
   { name: "Miron Lavr", role: "H.ADMIN", telegram: "MironLavrentyev" },
-  { name: "Kirxwq", role: "H.ADMIN" },
+  { name: "Kirxwq", role: "H.ADMIN", telegram: "UwU_l0l" },
   { name: "Baton", role: "CURATOR", telegram: "bkysnuibaton" },
   { name: "Ser4ek", role: "CO.CURATOR", telegram: "od1ho4k" },
 ];
